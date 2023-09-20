@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator | Akshat Web Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/favicon.jpg" type="image/jpg">
+</head>
+<body>
+    <header>
+        <h1>Akshat Pandey's Web Tools</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="https://youtube.com/@AkshatTechTutor">YouTube</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>QR Code Generator</h1>
+    </header>
+
+    <main>
+        <section class="generator">
+            <h2>Generate QR Code</h2>
+            <label for="qrText">Enter text or URL:</label>
+            <input type="text" id="qrText" placeholder="Enter text or URL">
+            <button id="generateQR">Generate QR Code</button>
+            <div class="loading"></div>
+        </section>
+
+        <section class="result">
+            <h2>Generated QR Code:</h2>
+            <div id="qrCode"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 QR Code Generator</p>
+    </footer>
+
+    <script>
+        // JavaScript code for the QR code generator
+        document.getElementById("generateQR").addEventListener("click", function () {
+            const qrText = document.getElementById("qrText").value;
+            const qrCode = document.getElementById("qrCode");
+            const loading = document.querySelector(".loading");
+
+            if (qrText) {
+                // Display loading animation
+                loading.style.display = "block";
+                qrCode.innerHTML = "";
+
+                const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrText)}`;
+                const img = document.createElement("img");
+                img.src = apiUrl;
+                img.alt = "QR Code";
+
+                // Simulate loading delay (for demonstration purposes)
+                setTimeout(function () {
+                    qrCode.appendChild(img);
+                    loading.style.display = "none";
+                }, 2000);
+            } else {
+                qrCode.innerHTML = "Please enter text or a URL.";
+            }
+        });
+    </script>
+</body>
+</html>

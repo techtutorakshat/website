@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Finder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/favicon.jpg" type="image/jpg">
+</head>
+<body>
+    <header>
+        <h1>Akshat Pandey's Web Tools</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="https://youtube.com/@AkshatTechTutor">YouTube</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Age Finder</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Find Your Age</h2>
+            <label for="birthdate">Enter your birthdate:</label>
+            <input type="date" id="birthdate">
+            <button id="findAge">Find Age</button>
+            <p id="result"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Age Finder</p>
+    </footer>
+
+    <script>
+        // JavaScript code for finding age
+        document.getElementById("findAge").addEventListener("click", function () {
+            const birthdate = document.getElementById("birthdate").value;
+            const result = document.getElementById("result");
+
+            if (birthdate) {
+                const currentDate = new Date();
+                const selectedDate = new Date(birthdate);
+                const age = currentDate.getFullYear() - selectedDate.getFullYear();
+
+                result.textContent = `You are ${age} years old.`;
+            } else {
+                result.textContent = "Please enter your birthdate.";
+            }
+        });
+    </script>
+     <footer>
+        <p>&copy; 2023 Akshat Web Tools</p><br>
+        <a style="color: white;" href="aboutus.html">About Us</a>
+        <a style="color: white;" href="privacy.html">Privacy Policy</a>
+        <a style="color: white;" href="contact.html">Contact Us</a>
+    </footer>
+</body>
+</html>
